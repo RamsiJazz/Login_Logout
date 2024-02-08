@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CKMPK</title>
+    <style>
+        body {
+            background: url('{% static 'images/bg_black_1.jpg' %}') center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #f44336;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+
+</head>
+<body>
+
+    <header>
+        <h1>CKM PK</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Profile</a>
+        <a href="#">Settings</a>
+        <a href="{% url 'signout' %}">Logout</a>
+    </nav>
+
+    <div class="container">
+        <section>
+            <h2>Welcome, {{ user.first_name }}!</h2>
+            <p>Our goal is to strengthen and unite Pravasi individuals and families in Changaramkulam, valuing
+                    their cultural legacy while fostering a sense of belonging.</p>
+        </section>
+
+        <section>
+       <!--     <h2>User Profile</h2>-->
+          <!--   <p>Email: [user@example.com]</p>-->
+            <!-- Add more profile information as needed -->
+        </section>
+
+        <section>
+            <form action="{% url 'signout' %}" method="post">
+                {% csrf_token %}
+                <button >Sign Out</button>
+            </form>
+        </section>
+    </div>
+
+
+
+</body>
+</html>
